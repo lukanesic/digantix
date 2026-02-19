@@ -112,7 +112,7 @@ export default function ServicesPage() {
               {/* Service 1 - Websites and Platforms */}
               <div className="relative pl-12">
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">
@@ -131,7 +131,7 @@ export default function ServicesPage() {
               {/* Service 2 - Mobile Applications */}
               <div className="relative pl-12">
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">
@@ -150,7 +150,7 @@ export default function ServicesPage() {
               {/* Service 3 - Strategy and Branding */}
               <div className="relative pl-12">
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">
@@ -168,7 +168,7 @@ export default function ServicesPage() {
               {/* Service 4 - Motion Design */}
               <div className="relative pl-12">
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">MOTION DESIGN</p>
@@ -184,7 +184,7 @@ export default function ServicesPage() {
               {/* Service 5 - Content Consulting */}
               <div className="relative pl-12">
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">CONTENT CONSULTING</p>
@@ -200,7 +200,7 @@ export default function ServicesPage() {
               {/* Service 6 - Video Editing */}
               <div className="relative pl-12">
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">VIDEO EDITING</p>
@@ -253,7 +253,7 @@ export default function ServicesPage() {
               <div className="relative pl-12">
                 {/* Timeline dot */}
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">Step 1</p>
@@ -270,7 +270,7 @@ export default function ServicesPage() {
               {/* Step 2 */}
               <div className="relative pl-12">
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">Step 2</p>
@@ -287,7 +287,7 @@ export default function ServicesPage() {
               {/* Step 3 */}
               <div className="relative pl-12">
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">Step 3</p>
@@ -304,7 +304,7 @@ export default function ServicesPage() {
               {/* Step 4 */}
               <div className="relative pl-12">
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">Step 4</p>
@@ -320,7 +320,7 @@ export default function ServicesPage() {
               {/* Step 5 */}
               <div className="relative pl-12">
                 <div className="absolute left-0 top-2 z-10">
-                  <div className="w-4 h-4 rounded-full border-2 border-black bg-white"></div>
+                  <div className="w-4 h-4 rounded-full border-2 border-[#C388F8] bg-black shadow-[0_0_10px_rgba(195,136,248,0.6)]" style={{ boxShadow: '0 0 15px rgba(195, 136, 248, 0.7), 0 0 5px rgba(195, 136, 248, 0.5)' }}></div>
                 </div>
 
                 <p className="text-sm text-gray-400 mb-4">Step 5</p>
