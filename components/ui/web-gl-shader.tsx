@@ -59,9 +59,12 @@ export function WebGLShader() {
         vec3 mainShade = brandColor * 0.85;
         vec3 darkShade = brandColor * 0.5;
 
-        float intensity1 = 0.025 / abs(p.y + sin((rx + time) * xScale) * yScale);
-        float intensity2 = 0.025 / abs(p.y + sin((gx + time) * xScale) * yScale);
-        float intensity3 = 0.025 / abs(p.y + sin((bx + time) * xScale) * yScale);
+        // Thicker lines on mobile - detect based on resolution width
+        float intensity = resolution.x < 640.0 ? 0.08 : 0.025;
+
+        float intensity1 = intensity / abs(p.y + sin((rx + time) * xScale) * yScale);
+        float intensity2 = intensity / abs(p.y + sin((gx + time) * xScale) * yScale);
+        float intensity3 = intensity / abs(p.y + sin((bx + time) * xScale) * yScale);
         
         vec3 color = lightShade * intensity1 + mainShade * intensity2 + darkShade * intensity3;
         
@@ -77,11 +80,18 @@ export function WebGLShader() {
 
       refs.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, -1)
 
+      // Detect mobile and increase yScale for larger lines
+      const isMobile = window.innerWidth < 640
+      const mobileYScale = 0.8 // More spacing between lines on mobile
+      const desktopYScale = 0.5
+      const mobileXScale = 0.6 // Wider waves on mobile
+      const desktopXScale = 1.0
+
       refs.uniforms = {
         resolution: { value: [window.innerWidth, window.innerHeight] },
         time: { value: 0.0 },
-        xScale: { value: 1.0 },
-        yScale: { value: 0.5 },
+        xScale: { value: isMobile ? mobileXScale : desktopXScale },
+        yScale: { value: isMobile ? mobileYScale : desktopYScale },
         distortion: { value: 0.05 },
       }
 
@@ -125,6 +135,11 @@ export function WebGLShader() {
       const height = window.innerHeight
       refs.renderer.setSize(width, height, false)
       refs.uniforms.resolution.value = [width, height]
+      
+      // Update scales based on screen size
+      const isMobile = width < 640
+      refs.uniforms.yScale.value = isMobile ? 0.8 : 0.5
+      refs.uniforms.xScale.value = isMobile ? 0.6 : 1.0
     }
 
     initScene()

@@ -80,10 +80,31 @@ export default function SideMenu({ isOpen, onClose }: SideMenuProps) {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="fixed top-0 right-0 bottom-0 z-50 bg-white w-[35%] min-w-100 shadow-2xl overflow-y-auto"
+            className="fixed top-0 right-0 bottom-0 z-50 bg-white w-full sm:w-[60%] lg:w-[35%] min-w-[300px] shadow-2xl overflow-y-auto"
           >
             <motion.div variants={contentVariants} className="h-full">
-              <div className="px-8 py-24">
+              {/* Close Button */}
+              <button
+                onClick={onClose}
+                className="absolute top-6 right-6 z-10 w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors duration-300 group"
+                aria-label="Close menu"
+              >
+                <svg
+                  className="w-6 h-6 text-gray-900 group-hover:text-[#C388F8] transition-colors duration-300"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+
+              <div className="px-6 sm:px-8 py-24">
                 {/* Menu Label */}
                 <p className="text-sm text-gray-500 mb-12">Menu</p>
 
@@ -91,7 +112,7 @@ export default function SideMenu({ isOpen, onClose }: SideMenuProps) {
                 <div className="space-y-6 mb-16">
                   <a
                     href="/about-us"
-                    className="block text-4xl font-light hover:text-[#C388F8] transition-colors duration-300"
+                    className="block text-3xl sm:text-4xl font-light hover:text-[#C388F8] transition-colors duration-300"
                     style={{ letterSpacing: -0.5 }}
                     onClick={onClose}
                   >
@@ -99,7 +120,7 @@ export default function SideMenu({ isOpen, onClose }: SideMenuProps) {
                   </a>
                   <a
                     href="/services"
-                    className="block text-4xl font-light hover:text-[#C388F8] transition-colors duration-300"
+                    className="block text-3xl sm:text-4xl font-light hover:text-[#C388F8] transition-colors duration-300"
                     style={{ letterSpacing: -0.5 }}
                     onClick={onClose}
                   >
@@ -107,23 +128,23 @@ export default function SideMenu({ isOpen, onClose }: SideMenuProps) {
                   </a>
                   <a
                     href="/projects"
-                    className="block text-4xl font-light hover:text-[#C388F8] transition-colors duration-300"
+                    className="block text-3xl sm:text-4xl font-light hover:text-[#C388F8] transition-colors duration-300"
                     style={{ letterSpacing: -0.5 }}
                     onClick={onClose}
                   >
                     Projects
                   </a>
 
-                  <div className="pt-6 flex gap-3">
+                  <div className="pt-6 flex flex-col sm:flex-row gap-2 sm:gap-3">
                     <a
                       href="mailto:info@digantix.com"
-                      className="px-4 py-2 border-2 border-black text-black rounded-full text-lg font-medium hover:bg-[#C388F8] hover:border-[#C388F8] hover:text-white transition-colors duration-300"
+                      className="px-3 sm:px-4 py-2 border-2 border-black text-black rounded-full text-sm sm:text-lg font-medium hover:bg-[#C388F8] hover:border-[#C388F8] hover:text-white transition-colors duration-300 text-center"
                     >
                       info@digantix.com
                     </a>
                     <a
                       href="tel:+381111234567"
-                      className="px-4 py-2 border-2 border-black text-black rounded-full text-lg font-medium hover:bg-[#C388F8] hover:border-[#C388F8] hover:text-white transition-colors duration-300"
+                      className="px-3 sm:px-4 py-2 border-2 border-black text-black rounded-full text-sm sm:text-lg font-medium hover:bg-[#C388F8] hover:border-[#C388F8] hover:text-white transition-colors duration-300 text-center"
                     >
                       +381 11 123 4567
                     </a>

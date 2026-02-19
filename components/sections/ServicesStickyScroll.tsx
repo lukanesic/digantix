@@ -98,7 +98,7 @@ export default function ServicesStickyScroll({
     >
       {/* Sticky Container */}
       <div className="sticky top-0 h-screen flex items-center justify-center bg-black overflow-hidden pt-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-8 w-full">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           {/* Heading - Always visible */}
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-white leading-tight mb-16 max-w-4xl">
             {heading}

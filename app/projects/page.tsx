@@ -145,11 +145,11 @@ export default function ProjectsPage() {
     <>
       <Header dark={isDark} />
       
-      <div className="min-h-screen bg-white mb-37.5">
+      <div className="min-h-screen bg-white lg:mb-37.5">
         {/* Hero Section */}
-        <div className="mx-auto w-[85%] pt-32 pb-16" style={{ maxWidth: '1500px' }}>
+        <div className="mx-auto w-full px-0 sm:px-6 lg:w-[85%] pt-24 sm:pt-32 pb-12 sm:pb-16" style={{ maxWidth: '1500px' }}>
           <motion.p 
-            className="text-gray-400 text-sm mb-6"
+            className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 px-4 sm:px-0"
             initial={{ 
               opacity: 0,
               clipPath: 'inset(0 0 0 100%)'
@@ -164,8 +164,8 @@ export default function ProjectsPage() {
           </motion.p>
           
           <motion.h1 
-            className="font-normal leading-tight mb-12 max-w-5xl text-black" 
-            style={{ fontSize: '80px', letterSpacing: '-.3rem' }}
+            className="font-normal leading-tight mb-8 sm:mb-12 max-w-5xl text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] px-4 sm:px-0" 
+            style={{ letterSpacing: '-0.05em' }}
             initial={{ 
               opacity: 0,
               clipPath: 'inset(0 0 0 100%)'
@@ -180,13 +180,13 @@ export default function ProjectsPage() {
           </motion.h1>
 
           {/* Filter Tabs */}
-          <div className="flex gap-8 border-b border-gray-200">
+          <div className="flex gap-4 sm:gap-6 lg:gap-8 border-b border-gray-200 overflow-x-auto scrollbar-hide px-4 sm:px-0">
             {filters.map((filter) => (
               <button
                 key={filter.value}
                 onClick={() => setActiveFilter(filter.value)}
                 style={{cursor:'pointer'}}
-                className={`pb-4 text-lg transition-colors duration-300 ${
+                className={`pb-3 sm:pb-4 text-sm sm:text-base lg:text-lg whitespace-nowrap transition-colors duration-300 ${
                   activeFilter === filter.value
                     ? 'text-black font-medium border-b-2 border-black'
                     : 'text-gray-400 font-light hover:text-gray-600'
@@ -199,11 +199,11 @@ export default function ProjectsPage() {
         </div>
 
         {/* Projects Grid */}
-        <div className="mx-auto w-[85%] py-16" style={{ maxWidth: '1000px' }}>
+        <div className="mx-auto w-full px-0 sm:px-6 lg:w-[85%] pt-6 sm:pt-12 pb-12 sm:pb-16" style={{ maxWidth: '1000px' }}>
           <AnimatePresence mode="wait">
             <motion.div 
               key={activeFilter}
-              className="grid grid-cols-2 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 px-4 sm:px-0"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -213,22 +213,18 @@ export default function ProjectsPage() {
               }}
             >
               {filteredProjects.map((project, index) => {
-                // Only right column gets offset, left column stays at 0
+                // Only right column gets offset on desktop
                 const isRightColumn = index % 2 === 1;
-                const offset = isRightColumn ? 150 : 0;
                 
                 return (
                   <a
                     key={project.id}
                     href={project.link}
-                    className="cursor-pointer group"
-                    style={{
-                      marginTop: `${offset}px`,
-                    }}
+                    className={`cursor-pointer group ${isRightColumn ? 'md:mt-[150px]' : ''}`}
                   >
                     <div className="w-full">
                       {/* Project Image Container */}
-                      <div className="relative w-full aspect-4/5 rounded-[5px] overflow-hidden mb-6">
+                      <div className="relative w-full aspect-4/5 rounded-[5px] overflow-hidden mb-4 sm:mb-6">
                       <Image
                         src={project.image}
                         alt={project.title}
@@ -241,9 +237,9 @@ export default function ProjectsPage() {
                     </div>
 
                     {/* Project Info */}
-                    <div className="px-2">
-                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">{project.category}</p>
-                      <h3 className="text-2xl font-normal text-black group-hover:text-[#C388F8] transition-colors duration-300">
+                    <div className="px-1 sm:px-2">
+                      <p className="text-xs text-gray-400 uppercase tracking-wider mb-1.5 sm:mb-2">{project.category}</p>
+                      <h3 className="text-xl sm:text-2xl font-normal text-black group-hover:text-[#C388F8] transition-colors duration-300">
                         {project.title}
                       </h3>
                     </div>

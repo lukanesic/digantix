@@ -118,9 +118,9 @@ export default function ProjectsSectionAutoScroll() {
   });
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
-      <div className="mx-auto w-[85%] mb-16 px-6 lg:px-8" style={{ maxWidth: '1500px' }}>
-        <div className="flex flex-col gap-4">
+    <section className="py-12 sm:py-24 bg-white overflow-hidden">
+      <div className="mx-auto w-[100%] lg:w-[85%] mb-8 sm:mb-16 px-0 sm:px-4 lg:px-8" style={{ maxWidth: '1500px' }}>
+        <div className="flex flex-col gap-4 px-4 sm:px-0">
           <h2 className="text-5xl sm:text-6xl font-regular text-black">
             Our projects
           </h2>
@@ -131,6 +131,7 @@ export default function ProjectsSectionAutoScroll() {
             <Button
               variant="primary"
               size="lg"
+              className="w-full sm:w-auto justify-center"
               onClick={() => {
                 window.location.href = '/projects';
               }}
@@ -156,7 +157,7 @@ export default function ProjectsSectionAutoScroll() {
               className="flex-shrink-0 w-[390px] cursor-pointer group"
             >
               {/* Project Image Container */}
-              <div className="relative w-[390px] h-[480px] rounded-[5px] overflow-hidden mb-4">
+              <div className="relative w-[390px] h-[576px] sm:h-[480px] rounded-[5px] overflow-hidden mb-4">
                 <Image
                   src={project.image}
                   alt={project.title}

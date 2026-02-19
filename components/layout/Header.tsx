@@ -28,7 +28,7 @@ export default function Header({ dark = false }: HeaderProps) {
       <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-300 ease-in-out ${
         dark ? 'bg-black/80' : 'bg-white/80'
       }`}>
-        <nav className="mx-auto px-6 lg:px-8 w-[90%]" style={{ maxWidth: '1700px' }}>
+        <nav className="mx-auto px-4 sm:px-6 lg:px-8 w-full sm:w-[90%]" style={{ maxWidth: '1700px' }}>
           <div className="flex items-center justify-between py-6">
             <Logo dark={dark} />
             

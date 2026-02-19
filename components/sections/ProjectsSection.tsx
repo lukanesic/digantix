@@ -104,10 +104,10 @@ export default function ProjectsSection({
   }, [carouselApi]);
 
   return (
-    <section className="relative py-20 bg-white overflow-hidden">
+    <section className="relative py-12 sm:py-20 bg-white overflow-hidden">
       {/* Header - constrained width */}
-      <div className="mx-auto w-[85%] px-6 lg:px-8 mb-16" style={{ maxWidth: '1500px' }}>
-        <div className="flex items-end justify-between">
+      <div className="mx-auto w-[85%] px-0 sm:px-6 lg:px-8 mb-8 sm:mb-16" style={{ maxWidth: '1500px' }}>
+        <div className="flex items-end justify-between px-4 sm:px-0">
           <div className="flex flex-col gap-4">
             <h2 className="text-5xl sm:text-6xl font-regular text-black">
               {title}

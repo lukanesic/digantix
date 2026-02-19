@@ -1,5 +1,7 @@
 'use client';
 
+import Button from '../ui/Button';
+
 interface Service {
   label: string;
   title: string;
@@ -56,12 +58,28 @@ export default function ServicesSection({
   services = defaultServices
 }: ServicesSectionProps) {
   return (
-    <section className="relative py-20 px-6 lg:px-8 bg-white">
-      <div className="mx-auto w-[90%]" style={{ maxWidth: '1100px' }}>
-        {/* Title */}
-        <h2 className="text-5xl sm:text-6xl font-regular text-black mb-16">
-          {title}
-        </h2>
+    <section className="relative py-20 px-0 sm:px-6 lg:px-8 bg-white">
+      <div className="mx-auto w-[90%] px-4 sm:px-0" style={{ maxWidth: '1100px' }}>
+        <div className="flex flex-col gap-4 mb-16">
+          <h2 className="text-5xl sm:text-6xl font-regular text-black">
+            {title}
+          </h2>
+          <p className="text-[16px] leading-relaxed text-black max-w-2xl font-light">
+            Comprehensive digital solutions tailored to your needs
+          </p>
+          <div className="mt-4">
+            <Button
+              variant="primary"
+              size="lg"
+              className="w-full sm:w-auto justify-center"
+              onClick={() => {
+                window.location.href = '/services';
+              }}
+            >
+              Explore our services
+            </Button>
+          </div>
+        </div>
 
         {/* Services List */}
         <div className="space-y-0">

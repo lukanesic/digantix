@@ -25,10 +25,10 @@ export function LetsWorkTogether() {
   }
 
   return (
-    <section className="flex min-h-screen items-center justify-center px-6 py-20">
-      <div className="relative flex flex-col items-center gap-16">
+    <section className="flex min-h-screen items-center justify-center px-4 sm:px-6 py-16 sm:py-20">
+      <div className="relative flex flex-col items-center gap-12 sm:gap-16">
         <div
-          className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 sm:gap-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
           style={{
             opacity: showSuccess ? 1 : 0,
             transform: showSuccess ? "translateY(0) scale(1)" : "translateY(20px) scale(0.95)",
@@ -36,9 +36,9 @@ export function LetsWorkTogether() {
           }}
         >
           {/* Elegant heading */}
-          <div className="flex flex-col items-center gap-2">
+          <div className="flex flex-col items-center gap-1.5 sm:gap-2">
             <span
-              className="text-xs font-medium tracking-[0.3em] uppercase text-gray-400 transition-all duration-500"
+              className="text-[10px] sm:text-xs font-medium tracking-[0.3em] uppercase text-gray-400 transition-all duration-500"
               style={{
                 transform: showSuccess ? "translateY(0)" : "translateY(10px)",
                 opacity: showSuccess ? 1 : 0,
@@ -48,7 +48,7 @@ export function LetsWorkTogether() {
               Perfect
             </span>
             <h3
-              className="text-3xl font-light tracking-tight text-white transition-all duration-500 sm:text-4xl"
+              className="text-2xl sm:text-3xl font-light tracking-tight text-white transition-all duration-500"
               style={{
                 transform: showSuccess ? "translateY(0)" : "translateY(10px)",
                 opacity: showSuccess ? 1 : 0,
@@ -77,7 +77,7 @@ export function LetsWorkTogether() {
           >
             {/* Left line */}
             <div
-              className="h-px w-8 bg-gray-700 transition-all duration-500 sm:w-12"
+              className="h-px w-6 sm:w-8 lg:w-12 bg-gray-700 transition-all duration-500"
               style={{
                 transform: isButtonHovered ? "scaleX(0)" : "scaleX(1)",
                 opacity: isButtonHovered ? 0 : 0.5,
@@ -86,7 +86,7 @@ export function LetsWorkTogether() {
 
             {/* Button content */}
             <div
-              className="relative flex items-center gap-3 overflow-hidden rounded-full border px-6 py-3 transition-all duration-500 sm:px-8 sm:py-4"
+              className="relative flex items-center gap-2 sm:gap-3 overflow-hidden rounded-full border px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 transition-all duration-500"
               style={{
                 borderColor: isButtonHovered ? "#fff" : "#444",
                 backgroundColor: isButtonHovered ? "#fff" : "transparent",
@@ -94,14 +94,14 @@ export function LetsWorkTogether() {
               }}
             >
               <Calendar
-                className="size-4 transition-all duration-500 sm:size-5"
+                className="size-3.5 sm:size-4 lg:size-5 transition-all duration-500"
                 strokeWidth={1.5}
                 style={{
                   color: isButtonHovered ? "#000" : "#fff",
                 }}
               />
               <span
-                className="text-sm font-medium tracking-wide transition-all duration-500 sm:text-base"
+                className="text-xs sm:text-sm lg:text-base font-medium tracking-wide transition-all duration-500"
                 style={{
                   color: isButtonHovered ? "#000" : "#fff",
                 }}
@@ -109,7 +109,7 @@ export function LetsWorkTogether() {
                 Book a call
               </span>
               <ArrowUpRight
-                className="size-4 transition-all duration-500 sm:size-5"
+                className="size-3.5 sm:size-4 lg:size-5 transition-all duration-500"
                 strokeWidth={1.5}
                 style={{
                   color: isButtonHovered ? "#000" : "#fff",
@@ -120,7 +120,7 @@ export function LetsWorkTogether() {
 
             {/* Right line */}
             <div
-              className="h-px w-8 bg-gray-700 transition-all duration-500 sm:w-12"
+              className="h-px w-6 sm:w-8 lg:w-12 bg-gray-700 transition-all duration-500"
               style={{
                 transform: isButtonHovered ? "scaleX(0)" : "scaleX(1)",
                 opacity: isButtonHovered ? 0 : 0.5,
@@ -130,7 +130,7 @@ export function LetsWorkTogether() {
 
           {/* Subtle subtext */}
           <span
-            className="text-xs tracking-widest uppercase text-gray-500 transition-all duration-500"
+            className="text-[10px] sm:text-xs tracking-widest uppercase text-gray-500 transition-all duration-500"
             style={{
               transform: showSuccess ? "translateY(0)" : "translateY(10px)",
               opacity: showSuccess ? 1 : 0,
@@ -153,7 +153,7 @@ export function LetsWorkTogether() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
           </span>
-          <span className="text-sm font-medium tracking-widest uppercase text-gray-400">
+          <span className="text-xs sm:text-sm font-medium tracking-widest uppercase text-gray-400">
             Available for projects
           </span>
         </div>
@@ -167,9 +167,9 @@ export function LetsWorkTogether() {
             pointerEvents: isClicked ? "none" : "auto",
           }}
         >
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-4 sm:gap-6">
             <h2
-              className="relative text-center text-5xl font-light tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              className="relative text-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light tracking-tight text-white transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
               style={{
                 opacity: isClicked ? 0 : 1,
                 transform: isClicked ? "translateY(-40px) scale(0.95)" : "translateY(0) scale(1)",
@@ -197,7 +197,7 @@ export function LetsWorkTogether() {
               </span>
             </h2>
 
-            <div className="relative mt-4 flex size-16 items-center justify-center sm:size-20">
+            <div className="relative mt-2 sm:mt-4 flex size-14 sm:size-16 lg:size-20 items-center justify-center">
               <div
                 className="pointer-events-none absolute inset-0 rounded-full border transition-all ease-out"
                 style={{
@@ -209,7 +209,7 @@ export function LetsWorkTogether() {
                 }}
               />
               <ArrowUpRight
-                className="size-6 transition-all ease-[cubic-bezier(0.16,1,0.3,1)] sm:size-7"
+                className="size-5 sm:size-6 lg:size-7 transition-all ease-[cubic-bezier(0.16,1,0.3,1)]"
                 style={{
                   transform: isClicked
                     ? "translate(100px, -100px) scale(0.5)"
@@ -224,18 +224,18 @@ export function LetsWorkTogether() {
             </div>
           </div>
 
-          <div className="absolute -left-8 top-1/2 -translate-y-1/2 sm:-left-16">
+          <div className="absolute -left-6 sm:-left-8 lg:-left-16 top-1/2 -translate-y-1/2">
             <div
-              className="h-px w-8 bg-gray-700 transition-all duration-500 sm:w-12"
+              className="h-px w-6 sm:w-8 lg:w-12 bg-gray-700 transition-all duration-500"
               style={{
                 transform: isClicked ? "scaleX(0) translateX(-20px)" : isHovered ? "scaleX(1.5)" : "scaleX(1)",
                 opacity: isClicked ? 0 : isHovered ? 1 : 0.5,
               }}
             />
           </div>
-          <div className="absolute -right-8 top-1/2 -translate-y-1/2 sm:-right-16">
+          <div className="absolute -right-6 sm:-right-8 lg:-right-16 top-1/2 -translate-y-1/2">
             <div
-              className="h-px w-8 bg-gray-700 transition-all duration-500 sm:w-12"
+              className="h-px w-6 sm:w-8 lg:w-12 bg-gray-700 transition-all duration-500"
               style={{
                 transform: isClicked ? "scaleX(0) translateX(20px)" : isHovered ? "scaleX(1.5)" : "scaleX(1)",
                 opacity: isClicked ? 0 : isHovered ? 1 : 0.5,
@@ -245,7 +245,7 @@ export function LetsWorkTogether() {
         </div>
 
         <div
-          className="mt-16 flex flex-col items-center gap-6 text-center transition-all duration-500 delay-100 mb-8"
+          className="mt-12 sm:mt-16 flex flex-col items-center gap-4 sm:gap-6 text-center transition-all duration-500 delay-100 mb-6 sm:mb-8 px-4"
           style={{
             opacity: isClicked ? 0 : 1,
             transform: isClicked ? "translateY(20px)" : "translateY(0)",
