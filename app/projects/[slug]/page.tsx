@@ -678,7 +678,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
               )}
               
               {project.launchType === "mobile" && (
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                <div className="flex flex-row flex-wrap gap-3 sm:gap-4">
                   {project.appStoreUrl && (
                     <a
                       href={project.appStoreUrl}

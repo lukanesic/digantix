@@ -149,7 +149,7 @@ export default function ProjectsPage() {
         {/* Hero Section */}
         <div className="mx-auto w-full px-0 sm:px-6 lg:w-[85%] pt-24 sm:pt-32 pb-12 sm:pb-16" style={{ maxWidth: '1500px' }}>
           <motion.p 
-            className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6 px-4 sm:px-0"
+            className="text-gray-400 text-sm sm:text-sm mb-4 sm:mb-6 px-4 sm:px-0"
             initial={{ 
               opacity: 0,
               clipPath: 'inset(0 0 0 100%)'
@@ -164,7 +164,7 @@ export default function ProjectsPage() {
           </motion.p>
           
           <motion.h1 
-            className="font-normal leading-tight mb-8 sm:mb-12 max-w-5xl text-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] px-4 sm:px-0" 
+            className="font-normal leading-tight mb-8 sm:mb-12 max-w-5xl text-black text-[44px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[80px] px-4 sm:px-0" 
             style={{ letterSpacing: '-0.05em' }}
             initial={{ 
               opacity: 0,
