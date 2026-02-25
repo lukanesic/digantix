@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, use } from "react";
+import { useState, useEffect, use, useRef } from "react";
 import Header from "@/components/layout/Header";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { LetsWorkTogether } from "@/components/ui/lets-work-section";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,10 +12,10 @@ import {
   SiShopify, SiStripe, SiApple, SiAndroid, SiFirebase, SiExpo, 
   SiTwilio, SiStorybook, SiTailwindcss, SiWordpress, SiCloudinary, 
   SiHubspot, SiGoogleanalytics, SiMeta, SiGoogleads, SiHtml5, 
-  SiInstagram, SiAdobecreativecloud
+  SiInstagram, SiAdobecreativecloud, SiWix, SiExpress, SiNodedotjs
 } from "react-icons/si";
 import { IconType } from "react-icons";
-import { Shield, Globe, Palette, BarChart3, Users, Sparkles, Target, Smartphone } from "lucide-react";
+import { Shield, Globe, Palette, BarChart3, Users, Sparkles, Target, Smartphone, Search } from "lucide-react";
 
 // Tech Stack icon mapping
 const getTechIcon = (tech: string): IconType | null => {
@@ -48,6 +48,12 @@ const getTechIcon = (tech: string): IconType | null => {
     "Google Analytics": SiGoogleanalytics,
     "Meta Ads": SiMeta,
     "Google Ads": SiGoogleads,
+    "Wix": SiWix,
+    "Wix CMS": SiWix,
+    "ContextAPI": SiReact,
+    "Adobe Photoshop": SiAdobecreativecloud,
+    "Express": SiExpress,
+    "Node.js": SiNodedotjs,
   };
   return iconMap[tech] || null;
 };
@@ -83,6 +89,12 @@ const getTechColor = (tech: string): string => {
     "Google Analytics": "#E37400",
     "Meta Ads": "#0081FB",
     "Google Ads": "#4285F4",
+    "Wix": "#0C6EFC",
+    "Wix CMS": "#0C6EFC",
+    "ContextAPI": "#61DAFB",
+    "Adobe Photoshop": "#31A8FF",
+    "Express": "#000000",
+    "Node.js": "#339933",
   };
   return colorMap[tech] || "#000000";
 };
@@ -111,6 +123,9 @@ const getServiceIcon = (service: string): IconType | null => {
     "Digital Marketing": SiMeta,
     "Social Media": SiInstagram,
     "Content Creation": Palette,
+    "SEO": Search,
+    "Responsive": Smartphone,
+    "Photography": Palette,
   };
   return iconMap[service] || null;
 };
@@ -139,412 +154,241 @@ const getServiceColor = (service: string): string => {
     "Digital Marketing": "#0081FB",
     "Social Media": "#E4405F",
     "Content Creation": "#A855F7",
+    "SEO": "#10B981",
+    "Responsive": "#3DDC84",
+    "Photography": "#EC4899",
   };
   return colorMap[service] || "#FFFFFF";
 };
 
+// Parallax Image Component
+const ParallaxImage = ({ 
+  src, 
+  alt, 
+  className = "", 
+  containerClassName = "",
+  style = {},
+  priority = false
+}: { 
+  src: string; 
+  alt: string; 
+  className?: string;
+  containerClassName?: string;
+  style?: React.CSSProperties;
+  priority?: boolean;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+
+  return (
+    <div ref={ref} className={containerClassName} style={style}>
+      <motion.div style={{ y }} className="w-full h-full">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className={className}
+          priority={priority}
+        />
+      </motion.div>
+    </div>
+  );
+};
+
 // Project data structure - Centralized for easy maintenance
 const projectsData: { [key: string]: any } = {
-  alpha: {
-    title: "Project Alpha",
-    subtitle: "Digital Innovation",
-    client: "Tech Innovations Inc.",
+  propus: {
+    title: "Propus",
+    subtitle: "Web Development",
+    client: "Propus - Switzerland",
     year: "2025",
-    services: ["Web Development", "UI/UX Design", "Brand Strategy"],
+    services: ["Web Development", "UI/UX Design", "Photography"],
     launchType: "web",
-    websiteUrl: "https://techinnovations-platform.com",
-    heroImage: "/projects/1c32e3e31282227a286ee62c987eb613.jpg",
+    websiteUrl: "https://propus.ch/",
+    heroImage: "/projects/propus/propus1.jpg",
     description:
-      "A revolutionary digital platform that transforms how enterprises manage their innovation pipeline and collaborate with startups.",
+      "Profesionalna web platforma za višestruko nagrađivanu kompaniju za fotografisanje nekretnina iz Zuga, Švajcarske, specijalizovanu za luksuzne nekretnine.",
     challenge:
-      "The client needed a comprehensive platform to streamline their innovation process, connecting internal teams with external startups while maintaining security and intellectual property protection.",
+      "Kreiranje elegantnog web prisustva koje odražava vrhunski kvalitet fotografskih usluga na zahtevnom švajcarskom tržištu nekretnina.",
     solution:
-      "We developed an enterprise-grade platform with advanced matching algorithms, secure collaboration spaces, and real-time analytics. The system integrates seamlessly with existing enterprise tools while providing an intuitive interface for all users.",
+      "Dizajnirali smo moderni, vizuelno impresivan sajt koji ističe portfolio profesionalne fotografije nekretnina, sa intuitivnom navigacijom i responzivnim dizajnom optimizovanim za međunarodno tržište.",
     images: [
-      "/projects/3fc0293123fc87d41e49dffa19244e48.jpg",
-      "/projects/43e0f22469512c040b79710a4f3bcdd9.jpg",
-      "/projects/4aeb07b15c492b11c4b096dd60786feb.jpg",
+      "/projects/propus/propus2.jpg",
+      "/projects/propus/propus3.jpg",
+      "/projects/propus/propus4.jpg",
     ],
     techStack: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Framer Motion",
-      "Supabase",
-      "Vercel",
-      "GSAP",
-    ],
-    results: [
-      { metric: "300%", label: "Increase in collaboration" },
-      { metric: "50%", label: "Faster innovation cycles" },
-      { metric: "95%", label: "User satisfaction rate" },
-    ],
-    nextProject: {
-      slug: "beta",
-      title: "Project Beta",
-      category: "Brand Experience",
-    },
-  },
-  beta: {
-    title: "Project Beta",
-    subtitle: "Brand Experience",
-    client: "Creative Studios",
-    year: "2025",
-    services: ["Branding", "Motion Design", "Digital Strategy"],
-    launchType: "web",
-    websiteUrl: "https://creativestudios.design",
-    heroImage: "/projects/3fc0293123fc87d41e49dffa19244e48.jpg",
-    description:
-      "A complete brand transformation and digital experience redesign for a leading creative studio looking to elevate their market position.",
-    challenge:
-      "The studio's brand identity had become outdated and no longer reflected their innovative approach to creative work. They needed a fresh, modern brand that would resonate with Fortune 500 clients.",
-    solution:
-      "We crafted a bold new visual identity, including logo design, color system, typography, and motion language. The rebrand was rolled out across all touchpoints, from website to pitch presentations.",
-    images: [
-      "/projects/43e0f22469512c040b79710a4f3bcdd9.jpg",
-      "/projects/4aeb07b15c492b11c4b096dd60786feb.jpg",
-      "/projects/1c32e3e31282227a286ee62c987eb613.jpg",
-    ],
-    techStack: [
+      "WordPress",
       "Figma",
-      "After Effects",
-      "React",
-      "Framer Motion",
-      "Three.js",
-      "GSAP",
-      "Adobe Creative Suite",
+      "Adobe Photoshop",
     ],
     results: [
-      { metric: "250%", label: "Brand recognition increase" },
-      { metric: "40%", label: "New client acquisition" },
-      { metric: "100%", label: "Client satisfaction" },
+      { metric: "300%", label: "Povećanje upita" },
+      { metric: "95%", label: "Zadovoljstvo klijenata" },
+      { metric: "50%", label: "Međunarodnih klijenata" },
     ],
     nextProject: {
-      slug: "gamma",
-      title: "Project Gamma",
-      category: "E-commerce Platform",
-    },
-  },
-  gamma: {
-    title: "Project Gamma",
-    subtitle: "E-commerce Platform",
-    client: "Retail Innovations",
-    year: "2025",
-    services: ["E-commerce", "Web Development", "UX Research"],
-    launchType: "web",
-    websiteUrl: "https://retailinnovations.shop",
-    heroImage: "/projects/43e0f22469512c040b79710a4f3bcdd9.jpg",
-    description:
-      "A next-generation e-commerce platform built to scale, featuring personalized shopping experiences and seamless checkout flows.",
-    challenge:
-      "High cart abandonment rates and complex checkout process were hindering conversion. The client needed a modern, mobile-first solution that could handle high traffic volumes.",
-    solution:
-      "We built a blazingly fast e-commerce platform with intelligent product recommendations, one-click checkout, and progressive web app capabilities for offline shopping.",
-    images: [
-      "/projects/4aeb07b15c492b11c4b096dd60786feb.jpg",
-      "/projects/4ceb74fafa77d9e9a4d97eec05ca901d.jpg",
-      "/projects/53fbc914f36f1e8ec162851adb32c133.jpg",
-    ],
-    techStack: [
-      "Next.js",
-      "React",
-      "Shopify",
-      "Supabase",
-      "Stripe",
-      "Framer Motion",
-      "Vercel",
-    ],
-    results: [
-      { metric: "180%", label: "Conversion rate increase" },
-      { metric: "65%", label: "Faster checkout" },
-      { metric: "45%", label: "Mobile sales growth" },
-    ],
-    nextProject: {
-      slug: "delta",
-      title: "Project Delta",
-      category: "Mobile Application",
-    },
-  },
-  delta: {
-    title: "Project Delta",
-    subtitle: "Mobile Application",
-    client: "FinTech Solutions",
-    year: "2025",
-    services: ["Mobile Development", "UI/UX Design", "Product Strategy"],
-    launchType: "mobile",
-    appStoreUrl: "https://apps.apple.com/app/fintech-wallet",
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.fintech.wallet",
-    heroImage: "/projects/4aeb07b15c492b11c4b096dd60786feb.jpg",
-    description:
-      "A secure, user-friendly mobile banking app that makes financial management intuitive and accessible for everyone.",
-    challenge:
-      "Traditional banking apps are complex and intimidating. The client wanted to create a mobile-first experience that would appeal to younger demographics while maintaining security.",
-    solution:
-      "We designed and developed a beautiful, intuitive mobile app with biometric authentication, real-time notifications, and AI-powered financial insights.",
-    images: [
-      "/projects/4ceb74fafa77d9e9a4d97eec05ca901d.jpg",
-      "/projects/53fbc914f36f1e8ec162851adb32c133.jpg",
-      "/projects/69f5adbac6fbabda41bd1bb007edd13e.jpg",
-    ],
-    techStack: [
-      "React Native",
-      "TypeScript",
-      "iOS",
-      "Android",
-      "Supabase",
-      "Firebase",
-      "Expo",
-    ],
-    results: [
-      { metric: "500K+", label: "Active users" },
-      { metric: "4.8★", label: "App store rating" },
-      { metric: "70%", label: "Daily active users" },
-    ],
-    nextProject: {
-      slug: "epsilon",
-      title: "Project Epsilon",
+      slug: "modular",
+      title: "Modular Houses",
       category: "Web Development",
     },
   },
-  epsilon: {
-    title: "Project Epsilon",
+  modular: {
+    title: "Modular Houses",
     subtitle: "Web Development",
-    client: "Healthcare Connect",
+    client: "Modular Houses",
     year: "2025",
-    services: ["Web Development", "HIPAA Compliance", "Patient Portal"],
+    services: ["Web Development", "UI/UX Design", "Digital Strategy", "SEO"],
     launchType: "web",
-    websiteUrl: "https://healthcareconnect-portal.com",
-    heroImage: "/projects/4ceb74fafa77d9e9a4d97eec05ca901d.jpg",
+    websiteUrl: "https://modularhouses.rs/",
+    heroImage: "/projects/modular/mod5.jpg",
     description:
-      "A HIPAA-compliant patient portal that streamlines healthcare communication and improves patient outcomes.",
+      "Moderna web platforma za predstavljanje inovativnih modularnih stambenih rešenja, koja kombinuje savremeni dizajn sa održivom arhitekturom.",
     challenge:
-      "Healthcare providers struggled with fragmented communication channels and outdated patient portals. They needed a modern, secure solution.",
+      "Kreiranje digitalnog prisustva koje efektno prenosi prednosti modularne gradnje, istovremeno predstavljajući kvalitet i inovativnost njihovih dizajna.",
     solution:
-      "We built a comprehensive patient portal with secure messaging, appointment scheduling, prescription management, and telehealth integration.",
+      "Razvili smo elegantan, moderan sajt koji ističe dizajne modularnih kuća kroz impresivne vizuelne prikaze, detaljne specifikacije i intuitivno korisničko iskustvo.",
     images: [
-      "/projects/53fbc914f36f1e8ec162851adb32c133.jpg",
-      "/projects/69f5adbac6fbabda41bd1bb007edd13e.jpg",
-      "/projects/89a6c93bac770b136d138d57f3c346cf.jpg",
+      "/projects/modular/Plan-1.svg",
+      "/projects/modular/mod1.JPG",
+      "/projects/modular/plan2.svg",
     ],
     techStack: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Supabase",
-      "Twilio",
-      "HIPAA Compliance",
-      "Vercel",
-    ],
-    results: [
-      { metric: "90%", label: "Patient satisfaction" },
-      { metric: "60%", label: "Reduced no-shows" },
-      { metric: "40%", label: "Support ticket reduction" },
-    ],
-    nextProject: {
-      slug: "zeta",
-      title: "Project Zeta",
-      category: "UI/UX Design",
-    },
-  },
-  zeta: {
-    title: "Project Zeta",
-    subtitle: "UI/UX Design",
-    client: "Global Tech Corp",
-    year: "2025",
-    services: ["UI/UX Design", "Product Strategy", "Design System"],
-    launchType: "web",
-    websiteUrl: "https://globaltechcorp-platform.com",
-    heroImage: "/projects/53fbc914f36f1e8ec162851adb32c133.jpg",
-    description:
-      "A comprehensive design system and UI overhaul for a global SaaS platform serving millions of users.",
-    challenge:
-      "The product suffered from inconsistent design patterns, poor user flows, and a dated interface that didn't scale across platforms.",
-    solution:
-      "We created a comprehensive design system from the ground up, redesigned key user flows, and implemented a modern, accessible interface that works seamlessly across web and mobile.",
-    images: [
-      "/projects/69f5adbac6fbabda41bd1bb007edd13e.jpg",
-      "/projects/89a6c93bac770b136d138d57f3c346cf.jpg",
-      "/projects/8dfcdd6773ee52368e4a2defc3aae039.jpg",
-    ],
-    techStack: [
+      "WordPress",
       "Figma",
-      "Storybook",
-      "React",
-      "Framer Motion",
-      "Design Tokens",
+    ],
+    results: [
+      { metric: "200%", label: "Povećanje upita" },
+      { metric: "85%", label: "Stopa angažovanja korisnika" },
+      { metric: "50%", label: "Duže vreme sesije" },
+    ],
+    nextProject: {
+      slug: "alexzlatara",
+      title: "Zlatara Alex",
+      category: "E-commerce Website",
+    },
+  },
+  alexzlatara: {
+    title: "Zlatara Alex",
+    subtitle: "E-commerce Website",
+    client: "Zlatara Alex",
+    year: "2025",
+    services: ["Web Development", "UI/UX Design", "SEO", "Responsive"],
+    launchType: "web",
+    websiteUrl: "https://www.alexzlatara.com",
+    heroImage: "/projects/alex/alex1.jpg",
+    description:
+      "Moderna online prodavnica za prodaju nakita i dragocenih predmeta, omogućavajući korisnicima da lako pregledaju i poručuju proizvode online.",
+    challenge:
+      "Kreiranje pouzdane i elegantne e-commerce platforme koja odražava kvalitet i luksuz zlatarskih proizvoda, sa sigurnim sistemom za online poručivanje.",
+    solution:
+      "Napravili smo elegantnu web platformu sa intuitivnim prikazom proizvoda, košaricom i sigurnim sistemom za online poručivanje, optimizovanom za mobilne uređaje.",
+    images: [
+      "/projects/alex/ban1.webp",
+      "/projects/alex/alex4.jpg",
+      "/projects/alex/ban3.webp",
+    ],
+    techStack: [
+      "Next.js",
       "Tailwind CSS",
-      "TypeScript",
-    ],
-    results: [
-      { metric: "85%", label: "Task completion increase" },
-      { metric: "50%", label: "Support inquiries down" },
-      { metric: "98%", label: "Accessibility score" },
-    ],
-    nextProject: {
-      slug: "eta",
-      title: "Project Eta",
-      category: "Creative Solutions",
-    },
-  },
-  eta: {
-    title: "Project Eta",
-    subtitle: "Creative Solutions",
-    client: "Artisan Collective",
-    year: "2025",
-    services: ["Branding", "Web Design", "Content Strategy"],
-    launchType: "web",
-    websiteUrl: "https://artisancollective.market",
-    heroImage: "/projects/69f5adbac6fbabda41bd1bb007edd13e.jpg",
-    description:
-      "A vibrant digital presence for an artisan marketplace connecting creators with conscious consumers.",
-    challenge:
-      "The marketplace needed to stand out in a crowded space while conveying authenticity, craftsmanship, and sustainability values.",
-    solution:
-      "We developed a warm, authentic brand identity and an immersive web experience that celebrates artisan stories through rich media and interactive elements.",
-    images: [
-      "/projects/89a6c93bac770b136d138d57f3c346cf.jpg",
-      "/projects/8dfcdd6773ee52368e4a2defc3aae039.jpg",
-      "/projects/b8f83a1454ffe739e837f7da2e88fbe5.jpg",
-    ],
-    techStack: [
-      "Next.js",
-      "React",
-      "WordPress",
-      "GSAP",
-      "Three.js",
+      "Wix CMS",
+      "Figma",
       "Framer Motion",
-      "Cloudinary",
+      "ContextAPI",
     ],
     results: [
-      { metric: "425%", label: "Organic traffic growth" },
-      { metric: "3.2K", label: "New artisans onboarded" },
-      { metric: "92%", label: "User engagement rate" },
+      { metric: "250%", label: "Povećanje online prodaje" },
+      { metric: "90%", label: "Zadovoljstvo korisnika" },
+      { metric: "60%", label: "Više mobilnih porudžbina" },
     ],
     nextProject: {
-      slug: "theta",
-      title: "Project Theta",
-      category: "Digital Strategy",
+      slug: "grid",
+      title: "Grid",
+      category: "Social Network & Booking",
     },
   },
-  theta: {
-    title: "Project Theta",
-    subtitle: "Digital Strategy",
-    client: "Enterprise Solutions Ltd",
+  grid: {
+    title: "Grid",
+    subtitle: "Social Network & Booking",
+    client: "Grid App",
     year: "2025",
-    services: ["Digital Strategy", "Web Development", "Marketing"],
-    launchType: "web",
-    websiteUrl: "https://enterprisesolutions.io",
-    heroImage: "/projects/89a6c93bac770b136d138d57f3c346cf.jpg",
-    description:
-      "A complete digital transformation strategy and execution for a B2B enterprise looking to modernize their online presence.",
-    challenge:
-      "The company's digital presence was fragmented across multiple outdated platforms, resulting in poor lead generation and brand inconsistency.",
-    solution:
-      "We developed a unified digital strategy, built a modern website with integrated CRM, and implemented marketing automation to nurture leads effectively.",
-    images: [
-      "/projects/8dfcdd6773ee52368e4a2defc3aae039.jpg",
-      "/projects/b8f83a1454ffe739e837f7da2e88fbe5.jpg",
-      "/projects/e0bd41a9918d532fbb11c226cc0cc499.jpg",
-    ],
-    techStack: [
-      "Next.js",
-      "React",
-      "WordPress",
-      "Supabase",
-      "HubSpot",
-      "Google Analytics",
-      "Vercel",
-    ],
-    results: [
-      { metric: "320%", label: "Lead generation increase" },
-      { metric: "55%", label: "Conversion rate growth" },
-      { metric: "80%", label: "Marketing efficiency" },
-    ],
-    nextProject: {
-      slug: "iota",
-      title: "Project Iota",
-      category: "Product Development",
-    },
-  },
-  iota: {
-    title: "Project Iota",
-    subtitle: "Product Development",
-    client: "StartUp Ventures",
-    year: "2025",
-    services: ["Product Strategy", "Mobile App", "Cloud Infrastructure"],
+    services: ["Mobile App", "Web Development", "UI/UX Design", "Social Media"],
     launchType: "mobile",
-    appStoreUrl: "https://apps.apple.com/app/startup-ventures",
-    playStoreUrl: "https://play.google.com/store/apps/details?id=com.startup.ventures",
-    heroImage: "/projects/8dfcdd6773ee52368e4a2defc3aae039.jpg",
+    appStoreUrl: "#",
+    playStoreUrl: "#",
+    heroImage: "/projects/grid/grid.jpg",
     description:
-      "Taking a startup from concept to launch with a full-featured mobile product and scalable backend infrastructure.",
+      "Društvena mreža i aplikacija za zakazivanje terena za padel. Grid povezuje igrače, omogućava rezervaciju terena i praćenje aktivnosti padel zajednice.",
     challenge:
-      "The startup had an innovative idea but lacked technical expertise and needed to move quickly to capitalize on market opportunity.",
+      "Padel entuzijasti su imali poteškoća da pronađu partnere za igru i dostupne terene za igranje. Potrebna je bila moderna platforma koja će jednostavno povezati igrače i omogućiti lako zakazivanje.",
     solution:
-      "We provided end-to-end product development, from market validation and MVP scoping to full product launch with analytics and growth infrastructure.",
+      "Razvili smo intuitivnu mobilnu i web aplikaciju sa društvenim funkcijama, sistemom za zakazivanje terena, profilima igrača i mogućnošću organizovanja grupa i turnira.",
     images: [
-      "/projects/b8f83a1454ffe739e837f7da2e88fbe5.jpg",
-      "/projects/e0bd41a9918d532fbb11c226cc0cc499.jpg",
-      "/projects/1c32e3e31282227a286ee62c987eb613.jpg",
+      "/projects/grid/grid.jpg",
+      "/projects/grid/grid.jpg",
+      "/projects/grid/grid.jpg",
     ],
     techStack: [
       "React Native",
       "TypeScript",
-      "iOS",
-      "Android",
+      "Next.js",
       "Supabase",
       "Expo",
-      "Stripe",
+      "Tailwind CSS",
     ],
     results: [
-      { metric: "100K", label: "Downloads in 6 months" },
-      { metric: "$2M", label: "Seed funding raised" },
-      { metric: "4.7★", label: "Average user rating" },
+      { metric: "1000+", label: "Aktivnih korisnika" },
+      { metric: "500+", label: "Zakazanih termina" },
+      { metric: "4.8★", label: "Ocena korisnika" },
     ],
     nextProject: {
-      slug: "kappa",
-      title: "Project Kappa",
-      category: "Marketing Campaign",
+      slug: "ulnaris",
+      title: "Ulnaris",
+      category: "Healthcare & CRM",
     },
   },
-  kappa: {
-    title: "Project Kappa",
-    subtitle: "Marketing Campaign",
-    client: "Fashion Forward",
+  ulnaris: {
+    title: "Ulnaris",
+    subtitle: "Healthcare & CRM",
+    client: "Ulnaris Fizioterapija",
     year: "2025",
-    services: ["Digital Marketing", "Social Media", "Content Creation"],
+    services: ["Web Development", "UI/UX Design", "Cloud Infrastructure"],
     launchType: "web",
-    websiteUrl: "https://fashionforward.style",
-    heroImage: "/projects/b8f83a1454ffe739e837f7da2e88fbe5.jpg",
+    websiteUrl: "#",
+    heroImage: "/projects/ulnaris/ulnaris-logo.jpg",
     description:
-      "An integrated digital marketing campaign that drove brand awareness and sales for a sustainable fashion brand.",
+      "Moderna web platforma i CRM sistem za fizioterapeutsku kliniku Ulnaris, omogućavajući jednostavno zakazivanje termina, upravljanje pacijentima i evidenciju tretmana.",
     challenge:
-      "Breaking through the noise in the competitive fashion industry while staying true to sustainability values and reaching the right audience.",
+      "Klinika je imala potrebu za digitalnim rešenjem koje će olakšati proces zakazivanja, upravljanje pacijentima i vođenje evidencije tretmana, uz mogućnost online pristupa za pacijente.",
     solution:
-      "We created a multi-channel campaign with compelling storytelling, influencer partnerships, and data-driven targeting that resonated with conscious consumers.",
+      "Razvili smo kompletan web sistem sa CRM funkcionalnostima, online zakazivanjem, bazom podataka pacijenata, istorijom tretmana i automatskim notifikacijama.",
     images: [
-      "/projects/e0bd41a9918d532fbb11c226cc0cc499.jpg",
-      "/projects/1c32e3e31282227a286ee62c987eb613.jpg",
-      "/projects/3fc0293123fc87d41e49dffa19244e48.jpg",
+      "/projects/ulnaris/ulnaris-logo.jpg",
+      "/projects/ulnaris/ulnaris-logo.jpg",
+      "/projects/ulnaris/ulnaris-logo.jpg",
     ],
     techStack: [
-      "Meta Ads",
-      "Google Ads",
-      "Next.js",
       "React",
-      "Shopify",
-      "WordPress",
-      "Framer Motion",
+      "Node.js",
+      "Express",
+      "Figma",
+      "Vercel",
+      "Supabase",
     ],
     results: [
-      { metric: "800%", label: "ROI on ad spend" },
-      { metric: "250K", label: "New followers gained" },
-      { metric: "175%", label: "Sales increase" },
+      { metric: "400+", label: "Zakazanih termina mesečno" },
+      { metric: "95%", label: "Zadovoljstvo pacijenata" },
+      { metric: "60%", label: "Smanjenje administrativnog rada" },
     ],
     nextProject: {
-      slug: "alpha",
-      title: "Project Alpha",
-      category: "Digital Innovation",
+      slug: "propus",
+      title: "Propus",
+      category: "Web Development",
     },
   },
 };
@@ -552,7 +396,7 @@ const projectsData: { [key: string]: any } = {
 export default function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
   const [isDark, setIsDark] = useState(false);
-  const project = projectsData[slug] || projectsData.alpha;
+  const project = projectsData[slug] || projectsData.propus;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -609,16 +453,17 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
           {/* Hero Image */}
           <motion.div
             className="relative w-full h-64 sm:h-96 lg:h-[500px] xl:h-[600px] rounded-xl sm:rounded-2xl overflow-hidden"
+            style={project.heroImage.endsWith('.svg') ? { backgroundColor: '#0a0a0a' } : {}}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
           >
-            <Image
+            <ParallaxImage
               src={project.heroImage}
               alt={project.title}
-              fill
-              className="object-cover"
-              priority
+              className={project.heroImage.endsWith('.svg') ? 'object-contain p-12 sm:p-16 lg:p-24' : 'object-cover'}
+              containerClassName="relative w-full h-full"
+              priority={true}
             />
           </motion.div>
         </div>
@@ -627,11 +472,11 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
         <div className="mx-auto w-full px-4 sm:px-6 lg:w-[85%] py-16 sm:py-16 lg:py-24" style={{ maxWidth: "1500px" }}>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 lg:gap-16">
             <div>
-              <p className="text-sm sm:text-sm xl:text-base text-gray-400 mb-3 sm:mb-3">CLIENT</p>
+              <p className="text-sm sm:text-sm xl:text-base text-gray-400 mb-3 sm:mb-3">{(slug === 'modular' || slug === 'alexzlatara' || slug === 'propus' || slug === 'grid' || slug === 'ulnaris') ? 'KLIJENT' : 'CLIENT'}</p>
               <p className="text-xl sm:text-lg lg:text-xl xl:text-2xl text-black font-semibold">{project.client}</p>
             </div>
             <div>
-              <p className="text-sm sm:text-sm xl:text-base text-gray-400 mb-3 sm:mb-3">YEAR</p>
+              <p className="text-sm sm:text-sm xl:text-base text-gray-400 mb-3 sm:mb-3">{(slug === 'modular' || slug === 'alexzlatara' || slug === 'propus' || slug === 'grid' || slug === 'ulnaris') ? 'GODINA' : 'YEAR'}</p>
               <p className="text-xl sm:text-lg lg:text-xl xl:text-2xl text-black font-light">{project.year}</p>
             </div>
             <div className="col-span-2">
@@ -658,7 +503,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
         {(project.launchType === "web" || project.launchType === "mobile") && (
           <div className="mx-auto w-full px-4 sm:px-6 lg:w-[85%] py-8 sm:py-12" style={{ maxWidth: "1500px" }}>
             <div className="border-t border-gray-200 pt-8 sm:pt-12">
-              <p className="text-xs sm:text-sm text-gray-400 mb-4 sm:mb-6 uppercase tracking-wider">View Live Project</p>
+              <p className="text-xs sm:text-sm text-gray-400 mb-4 sm:mb-6 uppercase tracking-wider">{(slug === 'modular' || slug === 'alexzlatara' || slug === 'propus' || slug === 'grid' || slug === 'ulnaris') ? 'Posetite sajt' : 'View Live Project'}</p>
               
               {project.launchType === "web" && project.websiteUrl && (
                 <a
@@ -670,7 +515,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                   </svg>
-                  Visit Website
+                  {(slug === 'modular' || slug === 'alexzlatara' || slug === 'propus' || slug === 'grid' || slug === 'ulnaris') ? 'Posetite sajt' : 'Visit Website'}
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -726,7 +571,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                 className="font-normal leading-tight mb-6 sm:mb-8 text-black text-3xl sm:text-4xl lg:text-5xl xl:text-[55px]"
                 style={{ letterSpacing: "-0.05em" }}
               >
-                The challenge.
+                {(slug === 'modular' || slug === 'alexzlatara' || slug === 'propus') ? 'Izazov.' : 'The challenge.'}
               </h2>
               <p
                 className="text-gray-600 font-light leading-relaxed text-sm sm:text-base lg:text-lg"
@@ -741,7 +586,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                 className="font-normal leading-tight mb-6 sm:mb-8 text-black text-2xl sm:text-3xl lg:text-4xl xl:text-[40px]"
                 style={{ letterSpacing: "-0.05em" }}
               >
-                Our solution.
+                {(slug === 'modular' || slug === 'alexzlatara' || slug === 'propus') ? 'Naše rešenje.' : 'Our solution.'}
               </h3>
               <p
                 className="text-gray-600 font-light leading-relaxed mb-8 sm:mb-12 text-sm sm:text-base lg:text-lg"
@@ -751,7 +596,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
 
               {/* Tech Stack */}
               <div className="mt-12 sm:mt-16">
-                <p className="text-xs sm:text-sm text-gray-400 mb-4 sm:mb-6">TECHNOLOGY STACK</p>
+                <p className="text-xs sm:text-sm text-gray-400 mb-4 sm:mb-6">{(slug === 'modular' || slug === 'alexzlatara' || slug === 'propus') ? 'TEHNOLOGIJE' : 'TECHNOLOGY STACK'}</p>
                 <div className="flex flex-wrap gap-3">
                   {project.techStack.map((tech: string, index: number) => {
                     const Icon = getTechIcon(tech);
@@ -775,23 +620,171 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
         {/* Image Gallery */}
         <div className="mx-auto w-full px-4 sm:px-6 lg:w-[85%] py-12 sm:py-16" style={{ maxWidth: "1500px" }}>
           <div className="space-y-6 sm:space-y-8">
-            {project.images.map((image: string, index: number) => (
-              <motion.div
-                key={index}
-                className="relative w-full h-64 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] rounded-xl sm:rounded-2xl overflow-hidden"
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-              >
-                <Image
-                  src={image}
-                  alt={`${project.title} screenshot ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-            ))}
+            {project.images.map((image: string, index: number) => {
+              // Special layout for first image in modular project
+              if (slug === 'modular' && index === 0) {
+                return (
+                  <motion.div
+                    key={index}
+                    className="relative w-full rounded-xl sm:rounded-2xl overflow-hidden"
+                    style={{ backgroundColor: '#1a1a1a' }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
+                      {/* Left side - Text content */}
+                      <div className="lg:col-span-2 p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
+                        <h2 className="text-white text-2xl sm:text-3xl lg:text-3xl font-bold mb-6 sm:mb-8">
+                          MODULARNI OBJEKAT<br />
+                          <span className="font-black">FOREST</span>
+                        </h2>
+
+                        {/* Dimensions */}
+                        <div className="flex items-start gap-3 mb-4">
+                          <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center">
+                            <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M6 6v12M18 6v12" />
+                            </svg>
+                          </div>
+                          <div className="text-white">
+                            <p className="text-base sm:text-lg">
+                              Dimenzija <span className="font-bold">12,10 x 5,00</span> m
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Area */}
+                        <div className="flex items-start gap-3 mb-6 sm:mb-8">
+                          <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center">
+                            <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                          </div>
+                          <div className="text-white">
+                            <p className="text-base sm:text-lg">
+                              Ukupna površina <span className="font-bold">60,5</span> m²
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-white text-sm sm:text-base leading-relaxed">
+                          Dizajniran kao idealno rešenje za savremen način života – mobilno, 
+                          energetski efikasno i estetski izuzetno.
+                        </p>
+                      </div>
+
+                      {/* Right side - Floor plan */}
+                      <div className="lg:col-span-3 relative h-64 sm:h-96 lg:h-[600px] flex items-center justify-center p-6 lg:p-8">
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={image}
+                            alt="Modular House Floor Plan"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              }
+
+              // Special layout for third image in modular project (LEAF)
+              if (slug === 'modular' && index === 2) {
+                return (
+                  <motion.div
+                    key={index}
+                    className="relative w-full rounded-xl sm:rounded-2xl overflow-hidden"
+                    style={{ backgroundColor: '#1a1a1a' }}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                  >
+                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
+                      {/* Left side - Text content */}
+                      <div className="lg:col-span-2 p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
+                        <h2 className="text-white text-2xl sm:text-3xl lg:text-3xl font-bold mb-6 sm:mb-8">
+                          MODULARNI OBJEKAT<br />
+                          <span className="font-black">LEAF</span>
+                        </h2>
+
+                        {/* Dimensions */}
+                        <div className="flex items-start gap-3 mb-4">
+                          <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center">
+                            <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M6 6v12M18 6v12" />
+                            </svg>
+                          </div>
+                          <div className="text-white">
+                            <p className="text-base sm:text-lg">
+                              Dimenzija <span className="font-bold">5,5 x 3,75</span> m
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Area */}
+                        <div className="flex items-start gap-3 mb-6 sm:mb-8">
+                          <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center">
+                            <svg className="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+                          </div>
+                          <div className="text-white">
+                            <p className="text-base sm:text-lg">
+                              Ukupna površina <span className="font-bold">20,5</span> m²
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Description */}
+                        <p className="text-white text-sm sm:text-base leading-relaxed">
+                          Dizajniran kao idealno rešenje za savremen način života – mobilno, 
+                          energetski efikasno i estetski izuzetno.
+                        </p>
+                      </div>
+
+                      {/* Right side - Floor plan */}
+                      <div className="lg:col-span-3 relative h-64 sm:h-96 lg:h-[600px] flex items-center justify-center p-6 lg:p-8">
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={image}
+                            alt="Modular House Floor Plan LEAF"
+                            fill
+                            className="object-contain"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              }
+
+              // Regular image display for other images
+              return (
+                <motion.div
+                  key={index}
+                  className="relative w-full h-64 sm:h-96 md:h-[500px] lg:h-[600px] xl:h-[700px] rounded-xl sm:rounded-2xl overflow-hidden"
+                  style={image.endsWith('.svg') ? { backgroundColor: '#0a0a0a' } : {}}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                >
+                  <ParallaxImage
+                    src={image}
+                    alt={`${project.title} screenshot ${index + 1}`}
+                    className={image.endsWith('.svg') ? 'object-contain p-12 sm:p-16 lg:p-24' : 'object-cover'}
+                    containerClassName="relative w-full h-full"
+                  />
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
@@ -801,7 +794,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
             className="font-normal leading-tight mb-12 sm:mb-16 text-black text-center text-3xl sm:text-4xl lg:text-5xl xl:text-[55px]"
             style={{ letterSpacing: "-0.05em" }}
           >
-            Impact & results.
+            {(slug === 'modular' || slug === 'alexzlatara' || slug === 'propus') ? 'Uticaj i rezultati.' : 'Impact & results.'}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 sm:gap-16">
             {project.results.map((result: any, index: number) => (
@@ -831,7 +824,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
         <div className="mx-auto w-full px-4 sm:px-6 lg:w-[85%] py-16 sm:py-24 lg:py-32 border-t border-gray-200" style={{ maxWidth: "1500px" }}>
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-4">
             <div>
-              <p className="text-xs sm:text-sm text-gray-400 mb-4">NEXT PROJECT</p>
+              <p className="text-xs sm:text-sm text-gray-400 mb-4">{(slug === 'modular' || slug === 'alexzlatara' || slug === 'propus') ? 'SLEDEĆI PROJEKAT' : 'NEXT PROJECT'}</p>
               <h3
                 className="font-normal leading-tight text-black text-3xl sm:text-4xl lg:text-5xl xl:text-[48px]"
                 style={{ letterSpacing: "-0.05em" }}
@@ -847,7 +840,7 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
               className="group flex items-center gap-3 sm:gap-4"
             >
               <span className="text-base sm:text-lg text-black font-light group-hover:text-[#C388F8] transition-colors duration-300">
-                View project
+                {(slug === 'modular' || slug === 'alexzlatara' || slug === 'propus') ? 'Pogledajte' : 'View project'}
               </span>
               <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full border-2 border-black group-hover:border-[#C388F8] group-hover:bg-[#C388F8] flex items-center justify-center transition-all duration-300">
                 <svg
