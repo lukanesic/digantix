@@ -23,31 +23,52 @@ const projects: Project[] = [
   },
   {
     id: 2,
+    title: "Modular Houses CRM",
+    category: "CRM System",
+    image: "/projects/modularcrm/modu1.jpg",
+    link: "/projects/modularcrm"
+  },
+  {
+    id: 3,
     title: "Propus Photography",
     category: "Web Development",
     image: "/projects/propus/propus-front.jpg",
     link: "/projects/propus"
   },
   {
-    id: 3,
+    id: 4,
     title: "Zlatara Alex",
     category: "E-commerce Website",
     image: "/projects/alex/alex-logo.jpg",
     link: "/projects/alexzlatara"
   },
   {
-    id: 4,
+    id: 5,
     title: "Grid",
     category: "Social Network & Booking",
     image: "/projects/grid/grid.jpg",
     link: "/projects/grid"
   },
   {
-    id: 5,
-    title: "Ulnaris",
-    category: "Healthcare & CRM",
-    image: "/projects/ulnaris/ulnaris-logo.jpg",
-    link: "/projects/ulnaris"
+    id: 6,
+    title: "Rad Namestaj",
+    category: "Web Design & Branding",
+    image: "/projects/rad/rad2.jpg",
+    link: "/projects/rad"
+  },
+  {
+    id: 7,
+    title: "Axonmed",
+    category: "Healthcare Application",
+    image: "/projects/axon/axon5.jpg",
+    link: "/projects/axonmed"
+  },
+  {
+    id: 8,
+    title: "ID&COM",
+    category: "Service Management CRM",
+    image: "/projects/idcom/i2.jpg",
+    link: "/projects/idcom"
   }
 ];
 

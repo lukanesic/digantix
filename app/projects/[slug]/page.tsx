@@ -12,7 +12,7 @@ import {
   SiShopify, SiStripe, SiApple, SiAndroid, SiFirebase, SiExpo, 
   SiTwilio, SiStorybook, SiTailwindcss, SiWordpress, SiCloudinary, 
   SiHubspot, SiGoogleanalytics, SiMeta, SiGoogleads, SiHtml5, 
-  SiInstagram, SiAdobecreativecloud, SiWix, SiExpress, SiNodedotjs
+  SiInstagram, SiAdobecreativecloud, SiWix, SiExpress, SiNodedotjs, SiMongodb
 } from "react-icons/si";
 import { IconType } from "react-icons";
 import { Shield, Globe, Palette, BarChart3, Users, Sparkles, Target, Smartphone, Search } from "lucide-react";
@@ -54,6 +54,7 @@ const getTechIcon = (tech: string): IconType | null => {
     "Adobe Photoshop": SiAdobecreativecloud,
     "Express": SiExpress,
     "Node.js": SiNodedotjs,
+    "MongoDB": SiMongodb,
   };
   return iconMap[tech] || null;
 };
@@ -95,6 +96,7 @@ const getTechColor = (tech: string): string => {
     "Adobe Photoshop": "#31A8FF",
     "Express": "#000000",
     "Node.js": "#339933",
+    "MongoDB": "#47A248",
   };
   return colorMap[tech] || "#000000";
 };
@@ -268,6 +270,44 @@ const projectsData: { [key: string]: any } = {
       { metric: "50%", label: "Duže vreme sesije" },
     ],
     nextProject: {
+      slug: "modularcrm",
+      title: "Modular Houses CRM",
+      category: "CRM System",
+    },
+  },
+  modularcrm: {
+    title: "Modular Houses CRM",
+    subtitle: "CRM System",
+    client: "Modular Houses",
+    year: "2025",
+    services: ["Web Development", "UI/UX Design", "Cloud Infrastructure", "Digital Strategy"],
+    launchType: "web",
+    websiteUrl: "#",
+    heroImage: "/projects/modularcrm/modu3.jpg",
+    description:
+      "Prilagođen CRM sistem razvijen za Modular Houses, omogućavajući kompletno upravljanje klijentima, projektima i prodajnim procesima. Sistem optimizuje poslovanje kroz centralizovanu platformu koja prati sve aspekte poslovanja sa modularnim kućama.",
+    challenge:
+      "Modular Houses je imao potrebu za specijalizovanim CRM-om koji će rešiti jedinstvene izazove industrije modularne gradnje - od praćenja kompleksnih projekata, upravljanja ponudama i specifikacijama kuća, do koordinacije između dizajnerskog tima, proizvodnje i klijenata.",
+    solution:
+      "Kreирali smo custom CRM rešenje koristeći React za dinamičan frontend, Node.js i Express za robustan backend, i MongoDB za fleksibilno skladištenje podataka. Sistem omogućava praćenje kompletnog lifecycle-a projekta, od prvog kontakta sa klijentom do finalizacije izgradnje, sa automatizovanim workflow-ima, real-time notifikacijama i detaljnom analitikom.",
+    images: [
+      "/projects/modularcrm/modu2.jpg",
+
+      "/projects/modularcrm/modu1.jpg",
+    ],
+    techStack: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Figma",
+    ],
+    results: [
+      { metric: "65%", label: "Brži prodajni proces" },
+      { metric: "90%", label: "Bolja organizacija projekata" },
+      { metric: "50+", label: "Aktivnih projekata" },
+    ],
+    nextProject: {
       slug: "alexzlatara",
       title: "Zlatara Alex",
       category: "E-commerce Website",
@@ -384,6 +424,119 @@ const projectsData: { [key: string]: any } = {
       { metric: "400+", label: "Zakazanih termina mesečno" },
       { metric: "95%", label: "Zadovoljstvo pacijenata" },
       { metric: "60%", label: "Smanjenje administrativnog rada" },
+    ],
+    nextProject: {
+      slug: "rad",
+      title: "Rad Namestaj",
+      category: "Web Design & Branding",
+    },
+  },
+  rad: {
+    title: "Rad Namestaj",
+    subtitle: "Web Design & Branding",
+    client: "Rad Namestaj",
+    year: "2025",
+    services: ["Web Design", "UI/UX Design", "SEO", "Photography"],
+    launchType: "web",
+    websiteUrl: "#",
+    heroImage: "/projects/rad/rad1.jpg",
+    description:
+      "Kompletno digitalno rešenje za proizvođača kvalitetnog nameštaja Rad Namestaj, obuhvatajući dizajn web sajta, brending strategiju i profesionalnu fotografiju proizvoda.",
+    challenge:
+      "Kreiranje modernog digitalnog identiteta koji će efikasno predstaviti kvalitet i craftsmanship njihovog nameštaja, uz potrebu za profesionalnim predstavljanjem proizvoda kroz visokokvalitetnu fotografiju.",
+    solution:
+      "Razvili smo elegantan WordPress sajt uz kompletnu brending strategiju dizajniranu u Figmi. Realizovali smo profesionalnu fotografsku sesiju koja ističe detalje i kvalitet nameštaja, a SEO optimizacija je omogućila bolju vidljivost na tržištu.",
+    images: [
+      "/projects/rad/rad2.jpg",
+      "/projects/rad/rad3.jpg",
+      "/projects/rad/rad4.jpg",
+    ],
+    techStack: [
+      "WordPress",
+      "Figma",
+      "Adobe Photoshop",
+      "Google Analytics",
+    ],
+    results: [
+      { metric: "180%", label: "Povećanje upita" },
+      { metric: "90%", label: "Zadovoljstvo klijenata" },
+      { metric: "4x", label: "Više organskog saobraćaja" },
+    ],
+    nextProject: {
+      slug: "axonmed",
+      title: "Axonmed",
+      category: "Healthcare Application",
+    },
+  },
+  axonmed: {
+    title: "Axonmed",
+    subtitle: "Healthcare Application",
+    client: "Axonmed",
+    year: "2025",
+    services: ["Web Development", "UI/UX Design", "Cloud Infrastructure"],
+    launchType: "web",
+    websiteUrl: "#",
+    heroImage: "/projects/axon/axon1.jpg",
+    description:
+      "Napredna web aplikacija za unos i upravljanje medicinskim podacima, razvijena kao prilagođeno rešenje za privatnog klijenta iz oblasti medicine. Axonmed omogućava efikasno praćenje pacijenata i medicinskih podataka.",
+    challenge:
+      "Klijent je imao potrebu za sigurnom i intuitivnom platformom koja će omogućiti jednostavno upravljanje medicinskim podacima, uz poštovanje svih standarda privatnosti i efikasno rukovanje velikim količinama informacija.",
+    solution:
+      "Razvili smo kompletnu web aplikaciju koristeći Next.js za frontend sa brzim i responzivnim korisničkim interfejsom, MongoDB za skalabilnu bazu podataka, i Node.js backend. Dizajn je kreiran u Figmi sa fokusom na jednostavnost i efikasnost pri unosu podataka.",
+    images: [
+      "/projects/axon/axon2.jpg",
+      "/projects/axon/axon3.jpg",
+      "/projects/axon/axon4.jpg",
+    ],
+    techStack: [
+      "Next.js",
+      "MongoDB",
+      "Node.js",
+      "Figma",
+      "TypeScript",
+    ],
+    results: [
+      { metric: "70%", label: "Brže unošenje podataka" },
+      { metric: "100%", label: "Zadovoljstvo klijenta" },
+      { metric: "500+", label: "Pacijenata u sistemu" },
+    ],
+    nextProject: {
+      slug: "idcom",
+      title: "ID&COM",
+      category: "Service Management CRM",
+    },
+  },
+  idcom: {
+    title: "ID&COM",
+    subtitle: "Service Management CRM",
+    client: "ID&COM",
+    year: "2025",
+    services: ["Web Development", "UI/UX Design", "Cloud Infrastructure", "Digital Strategy"],
+    launchType: "web",
+    websiteUrl: "#",
+    heroImage: "/projects/idcom/i3.jpg",
+    description:
+      "Specijalizovan CRM sistem za upravljanje servisnim zahtevima iTickeTima, razvijen za ID&COM kompaniju koja se bavi servisiranjem računara, monitora, štampača i celokupnog hardvera. Sistem omogućava efikasno praćenje kvarova, servisnih naloga i kompletnog workflow-a od prijema do rešavanja problema.",
+    challenge:
+      "ID&COM je suočen sa izazovom upravljanja velikim brojem servisnih zahteva dnevno, gde je bilo neophodno imati centralizovan sistem za praćenje tiketa, istorije kvarova, dodeljenih tehničara, statusa popravki i komunikacije sa klijentima - sve na jednom mestu uz mogućnost brzog pretraživanja i izveštavanja.",
+    solution:
+      "Razvili smo potpuno prilagođen CRM sistem koristeći React za responzivan i intuitivan frontend, Node.js i Express za backend sa realnim procesima, MongoDB za fleksibilnu bazu podataka, uz dizajn kreiran u Figmi koji omogućava brz unos tiketa. Sistem sadrži dashboard sa statistikama, sistem notifikacija, praćenje statusa popravki, evidenciju delova i automatsko generisanje izveštaja.",
+    images: [
+      "/projects/idcom/i1.jpg",
+      "/projects/idcom/i2.jpg",
+      "/projects/idcom/i4.jpg",
+    ],
+    techStack: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Figma",
+    ],
+    results: [
+      { metric: "80%", label: "Brže rešavanje tiketa" },
+      { metric: "95%", label: "Bolja organizacija servisnog rada" },
+      { metric: "200+", label: "Tiketa mesečno" },
     ],
     nextProject: {
       slug: "propus",

@@ -26,6 +26,14 @@ const projects: Project[] = [
   },
   {
     id: 2,
+    title: "Modular Houses CRM",
+    category: "CRM System",
+    image: "/projects/modularcrm/modu1.jpg",
+    link: "/projects/modularcrm",
+    tags: ["featured", "web"]
+  },
+  {
+    id: 3,
     title: "Propus Photography",
     category: "Web Development",
     image: "/projects/propus/propus-front.jpg",
@@ -33,7 +41,7 @@ const projects: Project[] = [
     tags: ["featured", "web"]
   },
   {
-    id: 3,
+    id: 4,
     title: "Zlatara Alex",
     category: "E-commerce Website",
     image: "/projects/alex/alex-logo.jpg",
@@ -41,7 +49,7 @@ const projects: Project[] = [
     tags: ["featured", "web"]
   },
   {
-    id: 4,
+    id: 5,
     title: "Grid",
     category: "Social Network & Booking",
     image: "/projects/grid/grid.jpg",
@@ -49,11 +57,27 @@ const projects: Project[] = [
     tags: ["featured", "mobile", "web"]
   },
   {
-    id: 5,
-    title: "Ulnaris",
-    category: "Healthcare & CRM",
-    image: "/projects/ulnaris/ulnaris-logo.jpg",
-    link: "/projects/ulnaris",
+    id: 6,
+    title: "Rad Namestaj",
+    category: "Web Design & Branding",
+    image: "/projects/rad/rad1.jpg",
+    link: "/projects/rad",
+    tags: ["featured", "web", "branding"]
+  },
+  {
+    id: 7,
+    title: "Axonmed",
+    category: "Healthcare Application",
+    image: "/projects/axon/axon1.jpg",
+    link: "/projects/axonmed",
+    tags: ["featured", "web"]
+  },
+  {
+    id: 8,
+    title: "ID&COM",
+    category: "Service Management CRM",
+    image: "/projects/idcom/i2.jpg",
+    link: "/projects/idcom",
     tags: ["featured", "web"]
   }
 ];
